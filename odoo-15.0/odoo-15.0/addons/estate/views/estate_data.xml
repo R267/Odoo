@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Menu for Estate Property Tags -->
+        <menuitem id="estate_property_tags_menu" name="Property Tags" parent="estate_menu_root"/>
+
+        <!-- View for Estate Property Tags -->
+        <record id="view_estate_property_tag_tree" model="ir.ui.view">
+            <field name="name">estate.property.tag.tree</field>
+            <field name="model">estate.property.tag</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Model for Estate Property Tags -->
+       <record id="model_estate_property_tag" model="ir.model">
+    <field name="name">estate.property.tag</field>
+    <field name="model">estate.property.tag</field>
+</record>
+
+        <!-- Field for Estate Property Tags in Property Form View -->
+        <record id="view_estate_property_form_inherit" model="ir.ui.view">
+            <field name="name">estate.property.form.inherit</field>
+            <field name="model">estate.property</field>
+            <field name="inherit_id" ref="estate.view_estate_property_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="after">
+                    <notebook>
+                        <page string="Tags">
+                            <field name="x_tag_ids" widget="many2many_tags"/>
+                        </page>
+                    </notebook>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
